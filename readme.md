@@ -1,4 +1,4 @@
-![logo](https://github.com/huangke19/DouyinSpider/logo.jpg)
+![logo](https://github.com/huangke19/DouyinSpider/raw/master/logo.jpg)
 
 
 
