@@ -1,6 +1,10 @@
-# 抖音视频爬虫
+![logo](https://github.com/huangke19/DouyinSpider/logo.jpg)
 
 
+
+# TikTokSpider
+
+![dd](https://github.com/huangke19/LagouSpider/raw/master/lines/bird.jpg)
 
 ## 解锁手机抓包技能
 
@@ -19,7 +23,7 @@
 
 http://v3-dy-z.ixigua.com/fcbe3c977ce612147e47e6450ae9b60c/5b87abed/video/m/220279cd152b24b4a1d953cab94c6818f18115a9d1d00010a7eaf9e9a44/
 
-
+![dd](https://github.com/huangke19/LagouSpider/raw/master/lines/bird.jpg)
 
 #### 先随便试一个视频
 
@@ -51,21 +55,52 @@ with open('dy.mp4', 'wb') as f:
 
 单个视频下载到手。
 
-如何继续下载多个视频呢？
 
 
+![dd](https://github.com/huangke19/LagouSpider/raw/master/lines/bird.jpg)
 
 ## 抓取指定用户视频
 
 第一步，从用户主页的分享页面入手
 
+1. 进入用户主页，将主页分享链接用chrome打开，就可以看到用户的主页面了
+
+2. 但此时还看不到用户的作品，将chrome设置成手机模式，刷新，bingo! 作品出来了
+
+3. 先点击喜欢，然后清空network，点回作品，就可以看到我们要找的作品url列表啦
+
+   ```
+   https://www.amemv.com/aweme/v1/aweme/post/?user_id=6xx1xx0&count=21&max_cursor=0&aid=1128&_signature=TG2uvBAbGAHzG19a.rniF0xtrq&dytk=14d65256b82dd042058b0eca9f85461b
+   ```
+
+4. 观察一下，这是一个ajax链接，我们需要的所有信息都在返回的包里了
+
+5. 模拟请求，直接点击链接，copy as curl，然后复制到Postman里转成requests代码
+
+6. 返回json里有一个has_more字段，如果为1表示还可以下拉出现更多作品，如果为0表示已经是最后
+
+7. 当我们下拉的时候可以发现，新出现的url里只有max_cursor变了，新出现的max_cursor就是上次请求返回的max_cursor，有了has_more和max_cursor两个参数，我们就可以把所有urls取到了
+
+8. 写一个递归函数 get_all_video_urls 根据has_more字段将所有urls递归爬取下来，终止条件是has_more==0
+
+9. 用一个全局变量url_list = [] 存放爬到的每一个视频的名字和地址
+
+10. 运行编写好的代码后发现，视频数据格式不对，返回去检查，原来第9步中的url不是真实的视频url，而是一个302跳转地址，真实视频地址在第9步response headers里的Location里
+
+11. 添加禁止跳转的代码，获取真实视频url
+
+    ```python
+    response = requests.request("GET", url, headers=headers, allow_redirects=False)
+    video_url = response.headers['Location']
+    ```
 
 
 
+#### 搞定收工！
 
 
 
-
+![dd](https://github.com/huangke19/LagouSpider/raw/master/lines/bird.jpg)
 
 ## 解决问题
 
