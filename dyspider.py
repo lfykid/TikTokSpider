@@ -66,7 +66,8 @@ def makedir(name):
     else:
         pass
 
-def main(_id):
+def main():
+    _id = int(input('请输入你要爬取的抖音用户id: '))
     username, dytk = get_name_and_dytk(_id)
     makedir(username)
     get_all_video_urls(_id, 0, dytk)
@@ -77,5 +78,4 @@ def main(_id):
         download_video(username, name, url)
 
 if __name__ == '__main__':
-    _id = int(input('输入id: '))
-    main(_id)
+    main()

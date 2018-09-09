@@ -8,7 +8,17 @@
 
 ![dd](https://github.com/huangke19/LagouSpider/raw/master/lines/bird.jpg)
 
-# 抓取指定用户视频
+
+
+## 使用方法
+
+运行dyspider.py文件，输入要爬用户的id
+
+```shell
+python dyspider.py
+```
+
+
 
 #### 分析过程
 
@@ -57,6 +67,3 @@
 
 ![dd](https://github.com/huangke19/LagouSpider/raw/master/lines/bird.jpg)
 
-## 使用
-
-本代码尚未完善，不宜食用，dytk参数尚未解密，如果使用，请自行输入要爬用户的id和抓包到的对应dytk参数
