@@ -87,3 +87,4 @@ querystring = {
 
 检查发现aid和_signature并不是必须传的，cookie也不是必须，只有dytk必须传，douyintoken? 该如何解密呢？
 
+已搞定，在第一个分享链接的response中有dytk
