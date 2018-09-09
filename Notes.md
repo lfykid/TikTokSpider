@@ -50,3 +50,40 @@ with open('dy.mp4', 'wb') as f:
 单个视频下载到手。
 
 
+
+## 批量爬虫遇到的问题
+
+#### 遇到443了
+
+关charles
+
+#### 遇到重定向问题302
+
+用requests爬虫拒绝301/302页面的重定向而拿到Location(重定向页面URL)
+
+```python
+response = requests.request("GET", url, headers=headers, allow_redirects=False)
+video_url = response.headers['Location']
+```
+
+
+
+## 下一步
+
+怎么让爬虫变得更通用呢？
+
+检查参数 
+
+```python
+querystring = {
+    "user_id":    "68152168500",
+    "count":      "21",
+    "max_cursor": max_cursor,
+    "aid":        "1128",
+    "_signature": "9HucchAar.RLDW2U0fv6DPR7nG",
+    "dytk":       "14d65256b82dd042058b0eca9f85461b"
+}
+```
+
+检查发现aid和_signature并不是必须传的，cookie也不是必须，只有dytk必须传，douyintoken? 该如何解密呢？
+
