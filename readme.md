@@ -26,6 +26,12 @@
 
 
 
+## 下载效果
+
+运行代码将会在项目文件夹下新建一个与目标用户同名的文件夹，所有视频皆存入于此
+
+![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/video.png)
+
 ![dd](https://github.com/huangke19/LagouSpider/raw/master/lines/bird.jpg)
 
 ## 分析过程
