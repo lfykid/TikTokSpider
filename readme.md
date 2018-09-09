@@ -8,13 +8,16 @@
 
 ## 使用方法
 
-运行dyspider.py文件，输入要爬用户的id
+1. 运行dyspider.py文件，输入要爬用户的id
 
-```shell
-python dyspider.py
-```
+   ![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/desc.png)
 
-![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/desc.png)
+2. 使用命令行参数 --uid 输入用户id
+
+   ```shell
+   python dyspider.py --uid 64742778880
+   ```
+
 
 注意：抖音号不是抖音ID，抖音ID可以通过将主页分享链接发用浏览器打开查看，详细步骤参见
 
@@ -71,4 +74,6 @@ python dyspider.py
 
 
 
+
+进化中，异常处理和日志功能后续添加 ... 
 
