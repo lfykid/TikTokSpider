@@ -6,10 +6,6 @@
 
 
 
-![dd](https://github.com/huangke19/LagouSpider/raw/master/lines/bird.jpg)
-
-
-
 ## 使用方法
 
 运行dyspider.py文件，输入要爬用户的id
