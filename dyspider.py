@@ -10,10 +10,10 @@ from head import download_headers, video_headers, Web_UA
 
 URL_LIST = []
 
-def get_all_video_urls(user_id, max_cursor):
+def get_all_video_urls(user_id, max_cursor, dytk):
     global URL_LIST
     url = "https://www.amemv.com/aweme/v1/aweme/post/?user_id={}&count=21&" \
-          "max_cursor={}&dytk=2f6120d834fc42936c8ae5777546f6b5".format(user_id, max_cursor)  # 此处dytk需要自己替换，还没有破解成功
+          "max_cursor={}&dytk={}".format(user_id, max_cursor, dytk)  # 此处dytk需要自己替换，还没有破解成功
     try:
         response = requests.request("GET", url, headers=video_headers)
         if response.status_code == 200:
@@ -23,7 +23,7 @@ def get_all_video_urls(user_id, max_cursor):
                 url = li.get('video').get('play_addr').get('url_list')[0]
                 URL_LIST.append([name, url])
             if data['has_more'] == 1 and data.get('max_cursor') != 0:
-                return get_all_video_urls(user_id, data.get('max_cursor'))
+                return get_all_video_urls(user_id, data.get('max_cursor'), dytk)
             else:
                 return
         else:
@@ -68,7 +68,7 @@ def makedir(name):
 def main(_id):
     username = get_name(_id)
     makedir(username)
-    get_all_video_urls(_id, 0)
+    get_all_video_urls(_id, 0, dytk)
     for item in URL_LIST:
         name = item[0]
         url = item[1]
@@ -77,4 +77,5 @@ def main(_id):
 
 if __name__ == '__main__':
     _id = int(input('输入id: '))
+    dytk = input('请输入抓到的dytk: ')
     main(_id)
