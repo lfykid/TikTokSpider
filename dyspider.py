@@ -52,12 +52,13 @@ def save_video(username, name, data):
     else:
         return
 
-def get_name(num):
+def get_name_and_dytk(num):
     url = "https://www.amemv.com/share/user/%s" % num
     headers = {'user-agent': Web_UA}
     response = requests.request("GET", url, headers=headers)
     name = re.findall('<p class="nickname">(.*?)</p>', response.text)[0]
-    return name
+    dytk = re.findall("dytk: '(.*?)'", response.text)[0]
+    return name, dytk
 
 def makedir(name):
     if not os.path.isdir(name):
@@ -66,7 +67,7 @@ def makedir(name):
         pass
 
 def main(_id):
-    username = get_name(_id)
+    username, dytk = get_name_and_dytk(_id)
     makedir(username)
     get_all_video_urls(_id, 0, dytk)
     for item in URL_LIST:
@@ -77,5 +78,4 @@ def main(_id):
 
 if __name__ == '__main__':
     _id = int(input('输入id: '))
-    dytk = input('请输入抓到的dytk: ')
     main(_id)
