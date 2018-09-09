@@ -23,7 +23,7 @@ def get_all_video_urls(user_id, max_cursor):
                 url = li.get('video').get('play_addr').get('url_list')[0]
                 URL_LIST.append([name, url])
             if data['has_more'] == 1 and data.get('max_cursor') != 0:
-                return get_all_video_urls(data.get('max_cursor'))
+                return get_all_video_urls(user_id, data.get('max_cursor'))
             else:
                 return
         else:
