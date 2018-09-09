@@ -27,6 +27,8 @@ python dyspider.py
 
 
 
+![dd](https://github.com/huangke19/LagouSpider/raw/master/lines/bird.jpg)
+
 ## 分析过程
 
 从用户主页的分享页面入手
@@ -72,5 +74,5 @@ python dyspider.py
 
 
 
-![dd](https://github.com/huangke19/LagouSpider/raw/master/lines/bird.jpg)
+
 
