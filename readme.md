@@ -18,7 +18,7 @@
 python dyspider.py
 ```
 
-
+![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/desc.png)
 
 #### 分析过程
 
