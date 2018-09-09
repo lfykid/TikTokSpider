@@ -142,10 +142,8 @@ querystring = {
 
 检查发现aid和_signature并不是必须传的，cookie也不是必须，只有dytk必须传，douyintoken? 该如何解密呢？
 
-dytk需要解密，代码也还需要改进
 
 
+## 使用
 
-## 注意
-
-本代码尚未完善，如果使用，请自行替换抓包到的dytk参数：dyspider.py 16行
+本代码尚未完善，如果使用，请自行输入要爬用户的id和抓包到的对应dytk参数
