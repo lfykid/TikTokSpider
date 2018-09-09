@@ -10,10 +10,10 @@ from head import download_headers, video_headers, Web_UA
 
 URL_LIST = []
 
-def get_all_video_urls(max_cursor):
+def get_all_video_urls(user_id, max_cursor):
     global URL_LIST
-    url = "https://www.amemv.com/aweme/v1/aweme/post/?user_id=99311023790&count=21&" \
-          "max_cursor=%s&dytk=2f6120d834fc42936c8ae5777546f6b5" % max_cursor
+    url = "https://www.amemv.com/aweme/v1/aweme/post/?user_id={}&count=21&" \
+          "max_cursor={}&dytk=2f6120d834fc42936c8ae5777546f6b5".format(user_id, max_cursor)  # 此处dytk需要自己替换，还没有破解成功
     try:
         response = requests.request("GET", url, headers=video_headers)
         if response.status_code == 200:
@@ -68,7 +68,7 @@ def makedir(name):
 def main(_id):
     username = get_name(_id)
     makedir(username)
-    get_all_video_urls(0)
+    get_all_video_urls(_id, 0)
     for item in URL_LIST:
         name = item[0]
         url = item[1]
