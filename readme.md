@@ -1,4 +1,4 @@
-![logo](https://github.com/huangke19/TikTokSpider/raw/master/logo.jpg)
+![logo](https://github.com/huangke19/TikTokSpider/raw/master/pics/logo.jpg)
 
 
 
@@ -63,11 +63,15 @@ with open('dy.mp4', 'wb') as f:
 
 从用户主页的分享页面入手
 
-1. 进入用户主页，将主页分享链接用chrome打开，就可以看到用户的主页面了
+1. 进入用户主页，点击 - 分享名片 - 链接形式，将主页分享链接发送到电脑上用chrome打开，就可以看到用户的主页面了
+
+   ![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/Screenshot.png)
 
 2. 但此时还看不到用户的作品，将chrome设置成手机模式，刷新，bingo! 作品出来了
 
-3. 先点击喜欢，然后清空network，点回作品，就可以看到我们要找的作品url列表啦
+   ![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/pc.png)
+
+3. 点击作品，下拉，查看network，就可以看到我们要找的作品url列表啦
 
    ```
    https://www.amemv.com/aweme/v1/aweme/post/?user_id=6xx1xx0&count=21&max_cursor=0&aid=1128&_signature=TG2uvBAbGAHzG19a.rniF0xtrq&dytk=14d65256b82dd042058b0eca9f85461b
@@ -144,4 +148,4 @@ dytk需要解密，代码也还需要改进
 
 ## 注意
 
-本代码尚未完善，如果使用，请自动替换抓包到的dytk参数：dyspider.py 16行
+本代码尚未完善，如果使用，请自行替换抓包到的dytk参数：dyspider.py 16行
