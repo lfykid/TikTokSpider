@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-
 import re
 import os
-import requests
+from time import sleep
 
+import requests
 from head import download_headers, video_headers, Web_UA
 
 URL_LIST = []
@@ -13,7 +13,7 @@ URL_LIST = []
 def get_all_video_urls(user_id, max_cursor, dytk):
     global URL_LIST
     url = "https://www.amemv.com/aweme/v1/aweme/post/?user_id={}&count=21&" \
-          "max_cursor={}&dytk={}".format(user_id, max_cursor, dytk)  # 此处dytk需要自己替换，还没有破解成功
+          "max_cursor={}&dytk={}".format(user_id, max_cursor, dytk)
     try:
         response = requests.request("GET", url, headers=video_headers)
         if response.status_code == 200:
@@ -23,6 +23,7 @@ def get_all_video_urls(user_id, max_cursor, dytk):
                 url = li.get('video').get('play_addr').get('url_list')[0]
                 URL_LIST.append([name, url])
             if data['has_more'] == 1 and data.get('max_cursor') != 0:
+                sleep(1)
                 return get_all_video_urls(user_id, data.get('max_cursor'), dytk)
             else:
                 return
@@ -76,6 +77,7 @@ def main():
         url = item[1]
         print("正在下载: ", name)
         download_video(username, name, url)
+        sleep(1)
 
 if __name__ == '__main__':
     main()
