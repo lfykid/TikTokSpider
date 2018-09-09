@@ -3,6 +3,7 @@
 
 import re
 import os
+from argparse import ArgumentParser
 from time import sleep
 
 import requests
@@ -67,8 +68,14 @@ def makedir(name):
     else:
         pass
 
+def get_parser():
+    parser = ArgumentParser()
+    parser.add_argument('--uid', dest='user_id', type=int, help='用户的抖音id')
+    return parser.parse_args()
+
 def main():
-    _id = int(input('请输入你要爬取的抖音用户id: '))
+    args = get_parser()
+    _id = args.user_id if args.user_id else int(input('请输入你要爬取的抖音用户id: '))
     username, dytk = get_name_and_dytk(_id)
     makedir(username)
     get_all_video_urls(_id, 0, dytk)
@@ -81,3 +88,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
