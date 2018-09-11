@@ -66,15 +66,6 @@ def download_video(index, username, name, url, retry=3):
         return None
 
 
-def save_video(username, name, data):
-    if data:
-        with open('%s/%s.mp4' % (username, name), 'wb') as f:
-            f.write(data)
-            f.close()
-    else:
-        return
-
-
 def get_name_and_dytk(num):
     url = "https://www.amemv.com/share/user/%s" % num
     headers = {'user-agent': Web_UA}
