@@ -4,9 +4,10 @@
 import os
 import re
 import sys
-import requests
-from time import sleep
 from argparse import ArgumentParser
+from time import sleep
+
+import requests
 
 from head import download_headers, video_headers, Web_UA
 
@@ -42,12 +43,15 @@ def get_all_video_urls(user_id, max_cursor, dytk):
         return None
 
 
-def download_video(index, username, name, url):
+def download_video(index, username, name, url, retry=3):
     print("\r正在下载第%s个视频: %s" % (index, name))
     try:
         response = requests.get(url, stream=True, headers=download_headers, timeout=15, allow_redirects=False)
         video_url = response.headers['Location']
         video_response = requests.get(video_url, headers=download_headers)
+        if not video_response.status_code == 200:
+            retry -= 1
+            download_video(index, username, name, url, retry)
         video_size = int(video_response.headers['Content-Length'])
         with open('%s/%s.mp4' % (username, name), 'wb') as f:
             dl = 0
