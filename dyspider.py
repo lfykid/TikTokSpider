@@ -10,6 +10,8 @@ import requests
 from head import download_headers, video_headers, Web_UA
 
 URL_LIST = []
+PAGE = 1
+
 
 def get_all_video_urls(user_id, max_cursor, dytk):
     global URL_LIST
@@ -25,6 +27,9 @@ def get_all_video_urls(user_id, max_cursor, dytk):
                 URL_LIST.append([name, url])
             if data['has_more'] == 1 and data.get('max_cursor') != 0:
                 sleep(1)
+                global PAGE
+                print('正在收集第%s页视频地址' % (PAGE))
+                PAGE += 1
                 return get_all_video_urls(user_id, data.get('max_cursor'), dytk)
             else:
                 return
@@ -34,6 +39,7 @@ def get_all_video_urls(user_id, max_cursor, dytk):
     except Exception as e:
         print('failed,', e)
         return None
+
 
 def download_video(username, name, url):
     try:
@@ -46,6 +52,7 @@ def download_video(username, name, url):
         print('download failed,', e)
         return None
 
+
 def save_video(username, name, data):
     if data:
         with open('%s/%s.mp4' % (username, name), 'wb') as f:
@@ -53,6 +60,7 @@ def save_video(username, name, data):
             f.close()
     else:
         return
+
 
 def get_name_and_dytk(num):
     url = "https://www.amemv.com/share/user/%s" % num
@@ -62,16 +70,19 @@ def get_name_and_dytk(num):
     dytk = re.findall("dytk: '(.*?)'", response.text)[0]
     return name, dytk
 
+
 def makedir(name):
     if not os.path.isdir(name):
         os.mkdir(name)
     else:
         pass
 
+
 def get_parser():
     parser = ArgumentParser()
     parser.add_argument('--uid', dest='user_id', type=int, help='用户的抖音id')
     return parser.parse_args()
+
 
 def main():
     args = get_parser()
@@ -79,13 +90,15 @@ def main():
     username, dytk = get_name_and_dytk(_id)
     makedir(username)
     get_all_video_urls(_id, 0, dytk)
-    for item in URL_LIST:
+    for index, item in enumerate(URL_LIST, 1):
         name = item[0]
+        if name == '抖音-原创音乐短视频社区':
+            name = name + str(index)
         url = item[1]
-        print("正在下载: ", name)
+        print("正在下载第%s个视频: %s" % (index, name))
         download_video(username, name, url)
         sleep(1)
 
+
 if __name__ == '__main__':
     main()
-
