@@ -8,7 +8,7 @@
 
 ## 使用方法
 
-1. 运行dyspider.py文件，输入要爬用户的id
+1. 运行dyspider.py文件，输入要爬用户的id  (注意不是手机端的抖音号)
 
    ![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/desc.png)
 
@@ -18,8 +18,11 @@
    python dyspider.py --uid 64742778880
    ```
 
+**注意**：抖音号不是抖音ID，抖音ID可以通过将主页分享链接发用浏览器打开查看，详细步骤参见
 
-注意：抖音号不是抖音ID，抖音ID可以通过将主页分享链接发用浏览器打开查看，详细步骤参见
+抖音ID在这里：
+
+![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/id.png)
 
 - [抖音短视频的抖音号-抖音ID怎么看？](https://jingyan.baidu.com/article/d2b1d102ce2a885c7e37d4f5.html)
 - https://jingyan.baidu.com/article/d2b1d102ce2a885c7e37d4f5.html
