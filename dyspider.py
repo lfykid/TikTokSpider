@@ -1,12 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import re
 import os
-from argparse import ArgumentParser
-from time import sleep
-
+import re
+import sys
 import requests
+from time import sleep
+from argparse import ArgumentParser
+
 from head import download_headers, video_headers, Web_UA
 
 URL_LIST = []
@@ -41,15 +42,23 @@ def get_all_video_urls(user_id, max_cursor, dytk):
         return None
 
 
-def download_video(username, name, url):
+def download_video(index, username, name, url):
+    print("\r正在下载第%s个视频: %s" % (index, name))
     try:
-        response = requests.request("GET", url, headers=download_headers, allow_redirects=False)
+        response = requests.get(url, stream=True, headers=download_headers, timeout=15, allow_redirects=False)
         video_url = response.headers['Location']
         video_response = requests.get(video_url, headers=download_headers)
-        video_data = video_response.content
-        save_video(username, name, video_data)
+        video_size = int(video_response.headers['Content-Length'])
+        with open('%s/%s.mp4' % (username, name), 'wb') as f:
+            dl = 0
+            for data in video_response.iter_content(chunk_size=1024):
+                dl += len(data)
+                f.write(data)
+                done = int(50 * dl / video_size)
+                sys.stdout.write("\r下载进度: [%s%s]" % ('█' * done, ' ' * (50 - done)))
+                sys.stdout.flush()
     except Exception as e:
-        print('download failed,', e)
+        print('download failed,', name, e)
         return None
 
 
@@ -95,8 +104,7 @@ def main():
         if name == '抖音-原创音乐短视频社区':
             name = name + str(index)
         url = item[1]
-        print("正在下载第%s个视频: %s" % (index, name))
-        download_video(username, name, url)
+        download_video(index, username, name, url)
         sleep(1)
 
 
