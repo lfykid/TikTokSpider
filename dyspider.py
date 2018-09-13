@@ -59,21 +59,23 @@ def download_video(index, username, name, url, retry=3):
         video_url = response.headers['Location']
         video_response = requests.get(video_url, headers=download_headers, timeout=15)
 
+        # 保存视频，显示下载进度
+        if video_response.status_code == 200:
+            video_size = int(video_response.headers['Content-Length'])
+            with open('%s/%s.mp4' % (username, name), 'wb') as f:
+                data_length = 0
+                for data in video_response.iter_content(chunk_size=1024):
+                    data_length += len(data)
+                    f.write(data)
+                    done = int(50 * data_length / video_size)
+                    sys.stdout.write("\r下载进度: [%s%s]" % ('█' * done, ' ' * (50 - done)))
+                    sys.stdout.flush()
         # 重试3次
-        if not video_response.status_code == 200:
+        elif video_response.status_code != 200 and retry:
             retry -= 1
             download_video(index, username, name, url, retry)
-        video_size = int(video_response.headers['Content-Length'])
-
-        # 保存视频，显示下载进度
-        with open('%s/%s.mp4' % (username, name), 'wb') as f:
-            data_length = 0
-            for data in video_response.iter_content(chunk_size=1024):
-                data_length += len(data)
-                f.write(data)
-                done = int(50 * data_length / video_size)
-                sys.stdout.write("\r下载进度: [%s%s]" % ('█' * done, ' ' * (50 - done)))
-                sys.stdout.flush()
+        else:
+            return
     except Exception as e:
         print('download failed,', name, e)
         return None
