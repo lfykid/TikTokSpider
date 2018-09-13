@@ -50,7 +50,9 @@ def get_all_video_urls(user_id, max_cursor, dytk):
 
 
 def download_video(index, username, name, url, retry=3):
-    ''' 下载视频数据并显示下载进度 '''
+    '''
+     下载视频,显示进度
+     '''
     print("\r正在下载第%s个视频: %s" % (index, name))
     try:
         response = requests.get(url, stream=True, headers=download_headers, timeout=15, allow_redirects=False)
@@ -79,7 +81,7 @@ def download_video(index, username, name, url, retry=3):
 
 def get_name_and_dytk(num):
     '''
-    获取用户名和dytk参数
+    获取用户名和dytk
     '''
     url = "https://www.amemv.com/share/user/%s" % num
     headers = {'user-agent': Web_UA}
@@ -94,7 +96,7 @@ def get_name_and_dytk(num):
 
 def makedir(name):
     '''
-     建立以用户名字为名的文件夹
+     建立用户名文件夹
      '''
     if not os.path.isdir(name):
         os.mkdir(name)
