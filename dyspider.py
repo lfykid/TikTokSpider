@@ -70,7 +70,7 @@ def download_video(index, username, name, url, retry=3):
                     done = int(50 * data_length / video_size)
                     sys.stdout.write("\r下载进度: [%s%s]" % ('█' * done, ' ' * (50 - done)))
                     sys.stdout.flush()
-        # 重试3次
+        # 失败重试3次
         elif video_response.status_code != 200 and retry:
             retry -= 1
             download_video(index, username, name, url, retry)
