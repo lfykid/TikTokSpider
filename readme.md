@@ -18,16 +18,15 @@
    python dyspider.py --uid 64742778880
    ```
 
-抖音号不是抖音ID，抖音ID在这里：
+- 抖音号不是抖音ID，抖音ID在这里：
 
+  ![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/id.png)
 
+  抖音ID可以通过将主页分享链接发用浏览器打开查看，详细步骤参见
 
-![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/id.png)
+  [抖音短视频的抖音号-抖音ID怎么看？](https://jingyan.baidu.com/article/d2b1d102ce2a885c7e37d4f5.html)
 
-抖音ID可以通过将主页分享链接发用浏览器打开查看，详细步骤参见
-
-- [抖音短视频的抖音号-抖音ID怎么看？](https://jingyan.baidu.com/article/d2b1d102ce2a885c7e37d4f5.html)
-- https://jingyan.baidu.com/article/d2b1d102ce2a885c7e37d4f5.html
+  https://jingyan.baidu.com/article/d2b1d102ce2a885c7e37d4f5.html
 
 
 
