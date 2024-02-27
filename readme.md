@@ -13,19 +13,17 @@
    python dyspider.py --uid 64742778880
    ```
 
-- 抖音号不是抖音ID，抖音ID在这里：
+- 抖音号不是抖音ID,UID 获取方式如下：
+- 通过 博主Link 获取 sid,/user/后面那一串是SID
 
-  ![dd](https://github.com/lfykid/TikTokSpider/raw/master/pics/id.png)
+```
+https://www.douyin.com/user/MS4wLjABAAAA31SF3HKqfHzU-3rfw-FgGqXJ2IsVqpKg_zUSx7hZXfI
+```
 
-  抖音ID可以通过将主页分享链接发用浏览器打开查看，详细步骤参见
+- 复制sid,替换连接中红色的sid， 打开链接获取 uid
+https://www.iesdouyin.com/web/api/v2/user/info/?sec_uid=此处填写SID
 
-  [抖音短视频的抖音号-抖音ID怎么看？](https://jingyan.baidu.com/article/d2b1d102ce2a885c7e37d4f5.html)
-
-  https://jingyan.baidu.com/article/d2b1d102ce2a885c7e37d4f5.html
-
-
-
-![dd](https://github.com/lfykid/LagouSpider/raw/master/lines/bird.jpg)
+- 在结果中搜索 UID 即可找到。
 
 ## 下载效果
 
