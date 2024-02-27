@@ -1,11 +1,6 @@
 ![logo](https://github.com/lfykid/TikTokSpider/raw/master/pics/logo.jpg)
 
-
-
 # TikTokSpider
-
-![dd](https://github.com/lfykid/LagouSpider/raw/master/lines/bird.jpg)
-
 ## 使用方法
 
 1. 运行dyspider.py文件，输入要爬用户的id  (注意不是手机端的抖音号)
