@@ -1,16 +1,16 @@
-![logo](https://github.com/huangke19/TikTokSpider/raw/master/pics/logo.jpg)
+![logo](https://github.com/lfykid/TikTokSpider/raw/master/pics/logo.jpg)
 
 
 
 # TikTokSpider
 
-![dd](https://github.com/huangke19/LagouSpider/raw/master/lines/bird.jpg)
+![dd](https://github.com/lfykid/LagouSpider/raw/master/lines/bird.jpg)
 
 ## 使用方法
 
 1. 运行dyspider.py文件，输入要爬用户的id  (注意不是手机端的抖音号)
 
-   ![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/desc.png)
+   ![dd](https://github.com/lfykid/TikTokSpider/raw/master/pics/desc.png)
 
 2. 使用命令行参数 --uid 输入用户id
 
@@ -20,7 +20,7 @@
 
 - 抖音号不是抖音ID，抖音ID在这里：
 
-  ![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/id.png)
+  ![dd](https://github.com/lfykid/TikTokSpider/raw/master/pics/id.png)
 
   抖音ID可以通过将主页分享链接发用浏览器打开查看，详细步骤参见
 
@@ -30,15 +30,15 @@
 
 
 
-![dd](https://github.com/huangke19/LagouSpider/raw/master/lines/bird.jpg)
+![dd](https://github.com/lfykid/LagouSpider/raw/master/lines/bird.jpg)
 
 ## 下载效果
 
 运行代码将会在项目文件夹下新建一个与目标用户同名的文件夹，所有视频皆存入于此
 
-![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/video.png)
+![dd](https://github.com/lfykid/TikTokSpider/raw/master/pics/video.png)
 
-![dd](https://github.com/huangke19/LagouSpider/raw/master/lines/bird.jpg)
+![dd](https://github.com/lfykid/LagouSpider/raw/master/lines/bird.jpg)
 
 ## 分析过程
 
@@ -46,11 +46,11 @@
 
 1. 进入用户主页，点击 - 分享名片 - 链接形式，将主页分享链接发送到电脑上用chrome打开，就可以看到用户的主页面了
 
-   ![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/Screenshot.png)
+   ![dd](https://github.com/lfykid/TikTokSpider/raw/master/pics/Screenshot.png)
 
 2. 但此时还看不到用户的作品，将chrome设置成手机模式，刷新，bingo! 作品出来了
 
-   ![dd](https://github.com/huangke19/TikTokSpider/raw/master/pics/pc.png)
+   ![dd](https://github.com/lfykid/TikTokSpider/raw/master/pics/pc.png)
 
 3. 点击作品，下拉，查看network，就可以看到我们要找的作品url列表啦
 
